@@ -1,0 +1,7 @@
+@import "../../SASS/mixins.scss";
+
+.imageLayer {
+  margin: 10px auto;
+  background-color: white;
+  @include flex(column, center, center);
+}

@@ -1,10 +1,14 @@
-import React from 'react';
-import s from './style.scss';
+import { SnackbarProvider } from "notistack";
+import React from "react";
+import { GamesList } from "../GamesList/index";
+import s from "./style.scss";
 
 export const App = () => {
   return (
-    <div className={s.app}>
-      AGORA VAI
-    </div>
+    <SnackbarProvider preventDuplicate maxSnack={3}>
+      <div className={s.app}>
+        <GamesList />
+      </div>
+    </SnackbarProvider>
   );
-}
+};
