@@ -1,4 +1,15 @@
+@import "../../SASS/mixins.scss";
+@import "../../SASS/variables.scss";
+
 .gamelist {
   padding: 2rem;
   height: 100%;
+  @include flex(column, center, center);
+  .loadMore {
+    padding: 8px;
+    margin-top: 8px;
+    border: 2px solid $button-background;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 }

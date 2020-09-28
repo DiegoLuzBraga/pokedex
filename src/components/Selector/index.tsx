@@ -3,12 +3,13 @@ import s from "./style.scss";
 
 interface SelectorProps {
   title: string;
+  onClickGame: () => void;
 }
 
-export const Selector = ({ title }: SelectorProps) => {
+export const Selector = ({ title, onClickGame }: SelectorProps) => {
   return (
-    <div className={s.card}>
-      <h2>{title}</h2>
+    <div className={s.card} onClick={onClickGame}>
+      <h2>Pokemon {title}</h2>
     </div>
   );
 };

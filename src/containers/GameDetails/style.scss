@@ -1,0 +1,14 @@
+@import "../../SASS/mixins.scss";
+
+.gameDetails {
+  .cardContent {
+    flex-wrap: wrap;
+    @include flex(row, center, center);
+    .pokemonCard {
+      width: 120px;
+      border: 1px solid black;
+      margin: 4px;
+      @include flex(column, center, center);
+    }
+  }
+}

@@ -6,7 +6,12 @@ import { useGameListViewModel } from "./GameListViewModel";
 import s from "./style.scss";
 
 export const GamesList = () => {
-  const { gameList, loading, handleLoadMoreClick } = useGameListViewModel();
+  const {
+    gameList,
+    loading,
+    handleLoadMoreClick,
+    handleGameClick,
+  } = useGameListViewModel();
 
   return (
     <div className={s.gamelist}>
@@ -14,13 +19,20 @@ export const GamesList = () => {
         <Loading />
       ) : (
         <>
-        {gameList.results.map((game, index) => {
-          return <Selector key={`${game.name}${index}`} title={gameTitleFormat(game.name)} />;
-        })}
-        {gameList.next &&
-        <button onClick={handleLoadMoreClick}>
-          Load more games!
-        </button>}
+          {gameList.results.map((game, index) => {
+            return (
+              <Selector
+                key={`${game.name}${index}`}
+                title={gameTitleFormat(game.name)}
+                onClickGame={() => handleGameClick(game.url)}
+              />
+            );
+          })}
+          {gameList.next && (
+            <button className={s.loadMore} onClick={handleLoadMoreClick}>
+              Load more games!
+            </button>
+          )}
         </>
       )}
     </div>
