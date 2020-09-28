@@ -11,5 +11,17 @@ export const useGameListModel = () => {
   ) => {
     await baseRequest("https://pokeapi.co/api/v2/version/", handleRequest, notificate);
   };
-  return { getGames };
+  
+  const getMoreGames = async (
+    url: string,
+    handleRequest: (response: GameVersion) => void,
+    notificate: (
+      message: string,
+      status: "default" | "error" | "success" | "warning" | "info",
+    ) => void,
+  ) => {
+    await baseRequest(url, handleRequest, notificate);
+  };
+
+  return { getGames, getMoreGames };
 };

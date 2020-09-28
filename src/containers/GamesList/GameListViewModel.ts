@@ -24,5 +24,11 @@ export const useGameListViewModel = () => {
     setLoading(false);
   };
 
-  return { gameList, loading } as const;
+  const handleLoadMoreClick = async () => {
+    setLoading(true);
+    await gameListModel.getMoreGames(gameList.next ?? "", response => setGameList({...response, results: [...gameList.results, ...response.results]}), notification);
+    setLoading(false);
+  }
+
+  return { gameList, loading, handleLoadMoreClick } as const;
 };

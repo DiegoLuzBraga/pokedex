@@ -6,16 +6,22 @@ import { useGameListViewModel } from "./GameListViewModel";
 import s from "./style.scss";
 
 export const GamesList = () => {
-  const { gameList, loading } = useGameListViewModel();
+  const { gameList, loading, handleLoadMoreClick } = useGameListViewModel();
 
   return (
     <div className={s.gamelist}>
       {loading ? (
         <Loading />
       ) : (
-        gameList.results.map((game, index) => {
+        <>
+        {gameList.results.map((game, index) => {
           return <Selector key={`${game.name}${index}`} title={gameTitleFormat(game.name)} />;
-        })
+        })}
+        {gameList.next &&
+        <button onClick={handleLoadMoreClick}>
+          Load more games!
+        </button>}
+        </>
       )}
     </div>
   );
