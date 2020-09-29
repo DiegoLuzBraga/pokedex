@@ -3,14 +3,14 @@ export const baseRequest = async <T>(
   handleRequest: (response: T) => void,
   notificate: (
     message: string,
-    status: "default" | "error" | "success" | "warning" | "info",
-  ) => void,
+    status: "default" | "error" | "success" | "warning" | "info"
+  ) => void
 ) => {
   await fetch(url, {
     method: "GET",
     headers: {
-      "content-type": "application/json",
-    },
+      "content-type": "application/json"
+    }
   })
     .then(async response => {
       const data = await response.json();

@@ -1,14 +1,37 @@
 @import "../../SASS/mixins.scss";
 
 .gameDetails {
-  .cardContent {
-    flex-wrap: wrap;
-    @include flex(row, center, center);
-    .pokemonCard {
-      width: 120px;
-      border: 1px solid black;
-      margin: 4px;
-      @include flex(column, center, center);
+  margin-bottom: 0.5rem;
+  .content {
+    padding: 2rem;
+    h3,
+    h4 {
+      margin: 0;
+      text-transform: capitalize;
+    }
+    h4 {
+      margin: 0.5rem 1rem 1rem;
+    }
+    .cardContent {
+      flex-wrap: wrap;
+      @include flex(row, center, center);
+      .pokemonCard {
+        width: 120px;
+        border: 1px solid black;
+        border-radius: 8px;
+        margin: 4px;
+        transition: 0.2s;
+        bottom: 0;
+        cursor: pointer;
+        @include flex(column, center, center);
+
+        &:hover {
+          @include liftCard();
+        }
+      }
+      .error {
+        @include flex(column, center, center);
+      }
     }
   }
 }

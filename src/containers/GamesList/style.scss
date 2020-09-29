@@ -4,6 +4,7 @@
 .gamelist {
   padding: 2rem;
   height: 100%;
+  background-color: white;
   @include flex(column, center, center);
   .loadMore {
     padding: 8px;

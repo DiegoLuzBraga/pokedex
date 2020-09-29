@@ -8,7 +8,7 @@ export const useNotification = () => {
       variant,
       anchorOrigin: {
         vertical: "bottom",
-        horizontal: "right",
-      },
+        horizontal: "right"
+      }
     });
 };

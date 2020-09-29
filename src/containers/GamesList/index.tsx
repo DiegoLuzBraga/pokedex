@@ -1,4 +1,5 @@
 import React from "react";
+import { Header } from '../../components/Header';
 import { Loading } from "../../components/Loading";
 import { Selector } from "../../components/Selector";
 import { gameTitleFormat } from "../../utils/gameTitleFormat";
@@ -10,31 +11,30 @@ export const GamesList = () => {
     gameList,
     loading,
     handleLoadMoreClick,
-    handleGameClick,
+    handleGameClick
   } = useGameListViewModel();
 
-  return (
-    <div className={s.gamelist}>
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          {gameList.results.map((game, index) => {
-            return (
-              <Selector
-                key={`${game.name}${index}`}
-                title={gameTitleFormat(game.name)}
-                onClickGame={() => handleGameClick(game.url)}
-              />
-            );
-          })}
-          {gameList.next && (
-            <button className={s.loadMore} onClick={handleLoadMoreClick}>
-              Load more games!
-            </button>
-          )}
-        </>
-      )}
-    </div>
+  return loading ? (
+    <Loading />
+  ) : (
+    <>
+      <Header title="Choose your Pokemon game!" />
+      <div className={s.gamelist}>
+        {gameList.results.map((game, index) => {
+          return (
+            <Selector
+              key={`${game.name}${index}`}
+              title={gameTitleFormat(game.name)}
+              onClickGame={() => handleGameClick(game.url)}
+            />
+          );
+        })}
+        {gameList.next && (
+          <button className={s.loadMore} onClick={handleLoadMoreClick}>
+            Load more games!
+          </button>
+        )}
+      </div>
+    </>
   );
 };

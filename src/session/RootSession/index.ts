@@ -17,7 +17,7 @@ export class RootStore {
     return {
       routerStore: this.routerStore,
       history: this.history,
-      gameSession: this.gameSession,
+      gameSession: this.gameSession
     };
   }
 }

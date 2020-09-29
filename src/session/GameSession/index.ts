@@ -11,7 +11,7 @@ export class GameSession {
   @observable
   public gameData: GameData = {
     title: "",
-    regions: [],
+    regions: []
   };
 
   @action
@@ -20,10 +20,13 @@ export class GameSession {
   };
 
   @action
-  public setGameDataByField = (field: keyof GameData, data: string) => {
+  public setGameDataByField = (
+    field: keyof GameData,
+    data: string | string[]
+  ) => {
     this.gameData = {
       ...this.gameData,
-      [field]: data,
+      [field]: data
     };
   };
 }

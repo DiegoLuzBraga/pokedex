@@ -12,7 +12,7 @@ export const useGameListViewModel = () => {
     results: [],
     count: 0,
     next: null,
-    previous: null,
+    previous: null
   });
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -23,7 +23,7 @@ export const useGameListViewModel = () => {
   const getGames = async () => {
     setLoading(true);
     await gameListModel.getGames(
-      (response) => setGameList(response),
+      response => setGameList(response),
       notification
     );
     setLoading(false);
@@ -33,10 +33,10 @@ export const useGameListViewModel = () => {
     setLoading(true);
     await gameListModel.getMoreGames(
       gameList.next ?? "",
-      (response) =>
+      response =>
         setGameList({
           ...response,
-          results: [...gameList.results, ...response.results],
+          results: [...gameList.results, ...response.results]
         }),
       notification
     );
@@ -54,6 +54,6 @@ export const useGameListViewModel = () => {
     setGameList,
     setLoading,
     handleLoadMoreClick,
-    handleGameClick,
+    handleGameClick
   } as const;
 };

@@ -1,7 +1,7 @@
 import {
   GameVersionDetails,
   GameVersionGroupDetails,
-  Pokedex,
+  Pokedex
 } from "../../@types/interfaces";
 import { useStore } from "../../session/RootSession";
 import { baseRequest } from "../../utils/baseRequest";
