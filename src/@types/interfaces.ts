@@ -4,14 +4,14 @@ export interface BaseAPIType {
   previous: string | null;
 }
 
-interface BaseResult {
+export interface BaseResult {
   name: string;
   url: string;
 }
 
-interface PokedexResult {
-  entry_number: number;
-  pokemon_species: BaseResult;
+interface DetailsNames {
+  language: BaseResult;
+  name: string;
 }
 
 export interface GameVersion extends BaseAPIType {
@@ -20,15 +20,7 @@ export interface GameVersion extends BaseAPIType {
 
 export interface GameVersionDetails {
   name: string;
-  version_group: BaseResult;
-}
-
-export interface GameVersionGroupDetails {
-  generation: BaseResult;
-  regions: BaseResult[];
-  pokedexes: BaseResult[];
-}
-
-export interface Pokedex {
-  pokemon_entries: PokedexResult[];
+  names: DetailsNames[];
+  pokemon_species: BaseResult[];
+  main_region: BaseResult;
 }

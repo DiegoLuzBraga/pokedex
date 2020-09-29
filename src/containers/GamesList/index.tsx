@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from '../../components/Header';
+import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
 import { Selector } from "../../components/Selector";
 import { gameTitleFormat } from "../../utils/gameTitleFormat";
@@ -7,18 +7,13 @@ import { useGameListViewModel } from "./GameListViewModel";
 import s from "./style.scss";
 
 export const GamesList = () => {
-  const {
-    gameList,
-    loading,
-    handleLoadMoreClick,
-    handleGameClick
-  } = useGameListViewModel();
+  const { gameList, loading, handleGameClick } = useGameListViewModel();
 
   return loading ? (
     <Loading />
   ) : (
     <>
-      <Header title="Choose your Pokemon game!" />
+      <Header title="Choose your Pokemon generation!" />
       <div className={s.gamelist}>
         {gameList.results.map((game, index) => {
           return (
@@ -29,11 +24,6 @@ export const GamesList = () => {
             />
           );
         })}
-        {gameList.next && (
-          <button className={s.loadMore} onClick={handleLoadMoreClick}>
-            Load more games!
-          </button>
-        )}
       </div>
     </>
   );

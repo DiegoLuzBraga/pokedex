@@ -2,7 +2,8 @@ import { action, observable } from "mobx";
 
 interface GameData {
   title: string;
-  regions: string[];
+  region: string;
+  pokemonEntries: string;
 }
 
 export class GameSession {
@@ -11,7 +12,8 @@ export class GameSession {
   @observable
   public gameData: GameData = {
     title: "",
-    regions: []
+    region: "",
+    pokemonEntries: "",
   };
 
   @action
@@ -20,13 +22,10 @@ export class GameSession {
   };
 
   @action
-  public setGameDataByField = (
-    field: keyof GameData,
-    data: string | string[]
-  ) => {
+  public setGameDataByField = (field: keyof GameData, data: string) => {
     this.gameData = {
       ...this.gameData,
-      [field]: data
+      [field]: data,
     };
   };
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowLeft } from "../Icons/ArrowLeft/arrowLeft";
+import { ArrowLeft } from "../icons/ArrowLeft/arrowLeft";
 import s from "./style.scss";
 
 interface HeaderProps {

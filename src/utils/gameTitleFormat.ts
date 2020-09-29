@@ -1,5 +1,8 @@
 export const gameTitleFormat = (gameTitle: string): string => {
-  return gameTitle.length > 2
-    ? gameTitle.replace("-", " ").replace("-", " ")
-    : gameTitle.toUpperCase();
+  if (gameTitle.split("-").length >= 2) {
+    return `${gameTitle.split("-")[0]} ${gameTitle
+      .split("-")[1]
+      .toUpperCase()}`;
+  }
+  return gameTitle;
 };
