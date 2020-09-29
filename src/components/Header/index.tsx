@@ -11,7 +11,7 @@ export const Header = ({ goBack, title }: HeaderProps) => {
   return (
     <header className={s.header}>
       <nav className={s.nav}>
-        {goBack && <ArrowLeft onClick={goBack} />}
+        {goBack && <ArrowLeft data-testid="arrowLeft" onClick={goBack} />}
         <span>{title}</span>
       </nav>
     </header>
