@@ -1,12 +1,12 @@
 import { action, observable } from "mobx";
 
-interface GameData {
+export interface GameData {
   title: string;
   region: string;
   pokemonEntries: string;
 }
 
-export class GameSession {
+export class GameModelAbstract {
   @observable
   public gameVersionUrl: string = "";
   @observable

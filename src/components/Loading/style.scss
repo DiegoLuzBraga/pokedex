@@ -1,7 +1,11 @@
 @import "../../SASS/mixins.scss";
+@import "../../SASS/variables.scss";
 
 .imageLayer {
   margin: 10px auto;
-  background-color: white;
+  background-color: $background-color;
   @include flex(column, center, center);
+  span {
+    color: white;
+  }
 }

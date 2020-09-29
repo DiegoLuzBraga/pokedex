@@ -1,11 +1,10 @@
 import { RouterStore, syncHistoryWithStore } from "mobx-react-router";
 import { History, createBrowserHistory } from "history";
-import { createContext, useContext } from "react";
-import { GameModel } from "../GameModel";
-import { AbstractRootStore } from "./__abstract__";
-import { rootStoreContextMock, RootStoreMock } from "./__mocks__";
+import { createContext } from "react";
+import { AbstractRootStore } from "../__abstract__";
+import { GameModel } from "../../GameModel";
 
-export class RootStore extends AbstractRootStore {
+export class RootStoreMock extends AbstractRootStore {
   public routerStore: RouterStore;
   public history: History;
   public gameModel: GameModel;
@@ -25,14 +24,5 @@ export class RootStore extends AbstractRootStore {
   }
 }
 
-export const rootStore = new RootStore();
-export const rootStoreContext = createContext(rootStore);
-export let useStore = (): RootStore | RootStoreMock => {
-  return useContext(rootStoreContext);
-};
-
-if (process.env.UNIT_TEST) {
-  useStore = () => {
-    return useContext(rootStoreContextMock);
-  };
-}
+export const rootStoreMock = new RootStoreMock();
+export const rootStoreContextMock = createContext(rootStoreMock);

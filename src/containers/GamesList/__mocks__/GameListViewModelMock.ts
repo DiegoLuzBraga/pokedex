@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { GameVersion } from "../../@types/interfaces";
-import { useNotification } from "../../hooks/useNotification";
-import { useStore } from "../../session/RootSession";
+import { GameVersion } from "../../../@types/interfaces";
+import { useNotification } from "../../../hooks/useNotification";
+import { useStore } from "../../../session/RootSession";
 
-export const useGameListViewModel = () => {
+export const useGameListViewModelMock = () => {
   const { gameModel, routerStore } = useStore();
   const notification = useNotification();
   const [gameList, setGameList] = useState<GameVersion>({

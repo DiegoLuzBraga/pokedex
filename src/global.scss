@@ -1,6 +1,8 @@
+@import "SASS/variables.scss";
+
 body {
   margin: 0;
+  background-color: $background-color;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: white;
 }

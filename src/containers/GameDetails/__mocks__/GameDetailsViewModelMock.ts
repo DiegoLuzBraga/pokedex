@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { useNotification } from "../../hooks/useNotification";
-import { useStore } from "../../session/RootSession";
-import { BaseResult } from "../../@types/interfaces";
+import { BaseResult } from "../../../@types/interfaces";
+import { useNotification } from "../../../hooks/useNotification";
+import { useStore } from "../../../session/RootSession";
 
 interface Pokedex extends BaseResult {
   entryNumber: number;
 }
 
-export const useGameDetailsViewModel = () => {
+export const useGameDetailsViewModelMock = () => {
   const { gameModel, routerStore } = useStore();
   const notification = useNotification();
   const [pokedex, setPokedex] = useState<Pokedex[]>([]);

@@ -3,7 +3,6 @@
 
 .gameDetails {
   margin-bottom: 0.5rem;
-  background-image: url("../../background.png");
   .content {
     padding: 2rem;
     @include flex(column, center, center);
@@ -24,12 +23,22 @@
           margin: 0.5rem 1rem 1rem;
         }
       }
+      .regionData {
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+        @include flex(row, space-between, center);
+        h3,
+        h4 {
+          margin: 0;
+        }
+      }
     }
     .cardContent {
       flex-wrap: wrap;
       @include flex(row, center, center);
       .pokemonCard {
         width: 120px;
+        min-height: 150px;
         border: 1px solid $nav-background;
         border-radius: 8px;
         margin: 4px;
