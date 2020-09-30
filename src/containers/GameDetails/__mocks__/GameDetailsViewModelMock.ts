@@ -1,62 +1,46 @@
 import { useEffect, useState } from "react";
-import { BaseResult } from "../../../@types/interfaces";
 import { useNotification } from "../../../hooks/useNotification";
 import { useStore } from "../../../session/RootSession";
-
-interface Pokedex extends BaseResult {
-  entryNumber: number;
-}
+import { Pokedex } from "../GameDetailsViewModel";
 
 export const useGameDetailsViewModelMock = () => {
-  const { gameModel, routerStore } = useStore();
-  const notification = useNotification();
-  const [pokedex, setPokedex] = useState<Pokedex[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+	const { gameModel, routerStore } = useStore();
+	const notification = useNotification();
+	const [pokedex] = useState<Pokedex[]>([
+		{ entryNumber: 12, name: "Charmander", url: "Charmander" },
+	]);
+	const [loading] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (gameModel.gameVersionUrl) {
-      getGameDetails();
-    } else {
-      routerStore.push("/");
-    }
-  }, []);
+	useEffect(() => {
+		if (gameModel.gameVersionUrl) {
+			getGameDetails();
+		} else {
+			routerStore.push("/");
+		}
+	}, []);
 
-  const getGameDetails = async () => {
-    setLoading(true);
-    await gameModel.getGameDetails(
-      gameModel.gameVersionUrl,
-      async (response) => {
-        gameModel.setGameDataByField("title", response.name);
-        gameModel.setGameDataByField("region", response.main_region.name);
-        gameModel.setGameDataByField(
-          "pokemonEntries",
-          response.pokemon_species.length.toString()
-        );
-        const pokedexFormatted = response.pokemon_species.map((pokemon) => ({
-          ...pokemon,
-          entryNumber: Number(
-            pokemon.url.split("/")[pokemon.url.split("/").length - 2]
-          ),
-        }));
-        setPokedex(
-          pokedexFormatted.sort((a, b) => a.entryNumber - b.entryNumber)
-        );
-      },
-      notification
-    );
-    setLoading(false);
-  };
+	const getGameDetails = () => {
+		gameModel.getGameDetails(
+			"url",
+			() => {
+				gameModel.setGameDataByField("title", "Pokemon Go");
+				gameModel.setGameDataByField("region", "Kanto");
+				gameModel.setGameDataByField("pokemonEntries", "15");
+			},
+			notification
+		);
+	};
 
-  const goBack = () => {
-    routerStore.push("/");
-  };
+	const goBack = () => {
+		routerStore.push("/");
+	};
 
-  return {
-    pokedex,
-    title: gameModel.gameData.title,
-    region: gameModel.gameData.region,
-    entries: gameModel.gameData.pokemonEntries,
-    loading,
-    goBack,
-  } as const;
+	return {
+		pokedex,
+		title: gameModel.gameData.title,
+		region: gameModel.gameData.region,
+		entries: gameModel.gameData.pokemonEntries,
+		loading,
+		goBack,
+	} as const;
 };

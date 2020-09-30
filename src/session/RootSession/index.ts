@@ -20,7 +20,7 @@ export class RootStore extends AbstractRootStore {
     return {
       routerStore: this.routerStore,
       history: this.history,
-      gameModel: this.gameModel,
+      gameModel: this.gameModel
     };
   }
 }

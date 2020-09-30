@@ -3,7 +3,7 @@ import { useNotification } from "../../hooks/useNotification";
 import { useStore } from "../../session/RootSession";
 import { BaseResult } from "../../@types/interfaces";
 
-interface Pokedex extends BaseResult {
+export interface Pokedex extends BaseResult {
   entryNumber: number;
 }
 
@@ -25,18 +25,18 @@ export const useGameDetailsViewModel = () => {
     setLoading(true);
     await gameModel.getGameDetails(
       gameModel.gameVersionUrl,
-      async (response) => {
+      async response => {
         gameModel.setGameDataByField("title", response.name);
         gameModel.setGameDataByField("region", response.main_region.name);
         gameModel.setGameDataByField(
           "pokemonEntries",
           response.pokemon_species.length.toString()
         );
-        const pokedexFormatted = response.pokemon_species.map((pokemon) => ({
+        const pokedexFormatted = response.pokemon_species.map(pokemon => ({
           ...pokemon,
           entryNumber: Number(
             pokemon.url.split("/")[pokemon.url.split("/").length - 2]
-          ),
+          )
         }));
         setPokedex(
           pokedexFormatted.sort((a, b) => a.entryNumber - b.entryNumber)
@@ -57,6 +57,6 @@ export const useGameDetailsViewModel = () => {
     region: gameModel.gameData.region,
     entries: gameModel.gameData.pokemonEntries,
     loading,
-    goBack,
+    goBack
   } as const;
 };

@@ -30,7 +30,7 @@ export abstract class GameModelAbstract {
   public gameData: GameData = {
     title: "",
     region: "",
-    pokemonEntries: "",
+    pokemonEntries: ""
   };
 
   @action
@@ -42,7 +42,7 @@ export abstract class GameModelAbstract {
   public setGameDataByField = (field: keyof GameData, data: string) => {
     this.gameData = {
       ...this.gameData,
-      [field]: data,
+      [field]: data
     };
   };
 }
