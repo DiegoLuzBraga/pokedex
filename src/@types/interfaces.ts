@@ -23,4 +23,5 @@ export interface GameVersionDetails {
   names: DetailsNames[];
   pokemon_species: BaseResult[];
   main_region: BaseResult;
+  types: BaseResult[];
 }

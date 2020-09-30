@@ -9,8 +9,8 @@ import { useGameDetailsViewModelMock } from "./__mocks__/GameDetailsViewModelMoc
 import s from "./style.scss";
 
 export const GameDetails = () => {
-  const { pokedex, loading, title, region, entries, goBack } = process.env
-    .UNIT_TEST
+  const { pokedex, loading, title, region, entries, allTypes, goBack } = process
+    .env.UNIT_TEST
     ? useGameDetailsViewModelMock()
     : useGameDetailsViewModel();
 
@@ -29,6 +29,10 @@ export const GameDetails = () => {
               <div className={s.regionData}>
                 <h4>Region: {region}</h4>
                 <h4>Entries: {entries}</h4>
+                <div className={s.types}>
+                  <h4>Types added in this generation: </h4>
+                  <span>{allTypes}</span>
+                </div>
               </div>
             </div>
             <div className={s.cardContent}>

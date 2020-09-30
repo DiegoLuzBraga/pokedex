@@ -26,8 +26,8 @@
 
 ## :scroll: Features
 
-- [x]
-- []
+- [x] Listagem das gerações de games doPokémon
+- [x] Detalhes da geração, como nome, número de Pokemon, listagem dos Pokemon e região na qual a geração se passa e os tipos adicionados naquela geração.
 
 ## :bar_chart: Justificativa para o uso das tecnologias
 
@@ -46,10 +46,6 @@ Alguns fatores chave nortearam a maioria das decisões técnicas feitas no desen
 **Jest e RTL**
 
 - As bibliotecas Jest e React Testing Library (RTL) são open-source e possuem confiabilidade dentro da comunidade React, possuem atualizações frequentes e usos em diversas aplicações comerciais.
-
-## :interrobang: Problemáticas encontradas
-
--
 
 ## :thought_balloon: Será que esqueci alguma coisa?
 

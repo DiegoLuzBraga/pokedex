@@ -25,18 +25,25 @@ export const useGameDetailsViewModel = () => {
     setLoading(true);
     await gameModel.getGameDetails(
       gameModel.gameVersionUrl,
-      async response => {
+      async (response) => {
         gameModel.setGameDataByField("title", response.name);
         gameModel.setGameDataByField("region", response.main_region.name);
         gameModel.setGameDataByField(
           "pokemonEntries",
           response.pokemon_species.length.toString()
         );
-        const pokedexFormatted = response.pokemon_species.map(pokemon => ({
+        const allTypes = response.types.map((type) => type.name);
+
+        gameModel.setGameDataByField(
+          "types",
+          allTypes.length >= 1 ? allTypes.join(", ") : allTypes.join()
+        );
+
+        const pokedexFormatted = response.pokemon_species.map((pokemon) => ({
           ...pokemon,
           entryNumber: Number(
             pokemon.url.split("/")[pokemon.url.split("/").length - 2]
-          )
+          ),
         }));
         setPokedex(
           pokedexFormatted.sort((a, b) => a.entryNumber - b.entryNumber)
@@ -56,7 +63,8 @@ export const useGameDetailsViewModel = () => {
     title: gameModel.gameData.title,
     region: gameModel.gameData.region,
     entries: gameModel.gameData.pokemonEntries,
+    allTypes: gameModel.gameData.types,
     loading,
-    goBack
+    goBack,
   } as const;
 };

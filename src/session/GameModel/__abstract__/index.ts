@@ -5,6 +5,7 @@ export interface GameData {
   title: string;
   region: string;
   pokemonEntries: string;
+  types: string;
 }
 
 export abstract class GameModelAbstract {
@@ -30,7 +31,8 @@ export abstract class GameModelAbstract {
   public gameData: GameData = {
     title: "",
     region: "",
-    pokemonEntries: ""
+    pokemonEntries: "",
+    types: "",
   };
 
   @action
@@ -42,7 +44,7 @@ export abstract class GameModelAbstract {
   public setGameDataByField = (field: keyof GameData, data: string) => {
     this.gameData = {
       ...this.gameData,
-      [field]: data
+      [field]: data,
     };
   };
 }
