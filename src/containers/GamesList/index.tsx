@@ -1,4 +1,5 @@
 import React from "react";
+import { Error } from "../../components/Error";
 import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
 import { Selector } from "../../components/Selector";
@@ -11,7 +12,7 @@ export const GamesList = () => {
 
   return loading ? (
     <Loading />
-  ) : (
+  ) : gameList.results.length ? (
     <>
       <Header title="Choose your Pokemon generation!" />
       <div className={s.gamelist}>
@@ -26,5 +27,7 @@ export const GamesList = () => {
         })}
       </div>
     </>
+  ) : (
+    <Error />
   );
 };
